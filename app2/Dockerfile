@@ -2,6 +2,7 @@ FROM centos:7
 
 RUN set -x && \
     yum update -y && \
+    yum install -y sudo && \
     yum reinstall -y glibc-common && \
     yum -y clean all
 
@@ -19,6 +20,10 @@ ENV HOME /home/app
 RUN set -x && \
     groupadd app && \
     useradd -g app -d /home/app -s /bin/bash app
+
+# add sudo group
+RUN echo 'app:app' | chpasswd && \
+    echo 'app ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 WORKDIR $HOME
 USER app

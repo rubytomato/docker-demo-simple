@@ -6,7 +6,9 @@ services:
     build:
       context: ./app1
     environment:
-      - TZ=Asia/Tokyo
+      TZ: Asia/Tokyo
+    env_file:
+      - app1.env
     volumes:
       - share-data:/var/share
     hostname: ubuntu1
@@ -21,7 +23,9 @@ services:
     build:
       context: ./app2
     environment:
-      - TZ=Asia/Tokyo
+      TZ: Asia/Tokyo
+    env_file:
+      - app2.env
     volumes:
       - share-data:/var/share
     hostname: centos2

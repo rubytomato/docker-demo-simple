@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 RUN set -x && \
     apt-get update && \
-    apt-get install -y locales tzdata && \
+    apt-get install -y sudo locales tzdata && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean all
 
@@ -19,6 +19,10 @@ ENV HOME /home/app
 
 RUN set -x && \
     adduser --disabled-password --gecos "" --home /home/app --shell /bin/bash app
+
+# add sudo group
+RUN echo 'app:app' | chpasswd && \
+    echo 'app ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 WORKDIR $HOME
 USER app
