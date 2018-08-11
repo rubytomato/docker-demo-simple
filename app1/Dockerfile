@@ -1,10 +1,20 @@
 FROM ubuntu:18.04
 
 RUN set -x && \
-    apt-get update && \
-    apt-get install -y sudo locales tzdata && \
-    rm -rf /var/lib/apt/lists/* && \
-    apt-get clean all
+    apt update && \
+    apt install -y sudo locales tzdata apt-utils curl gcc g++ make gnupg2 && \
+    apt clean
+
+# install nodejs
+RUN set -x && \
+    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt install -y nodejs && \
+    apt clean
+
+# install git
+RUN set -x && \
+    apt install -y git && \
+    apt clean
 
 # locale settings
 RUN localedef -i ja_JP -c -f UTF-8 -A /usr/share/locale/locale.alias ja_JP.UTF-8 && \

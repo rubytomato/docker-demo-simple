@@ -2,8 +2,19 @@ FROM centos:7
 
 RUN set -x && \
     yum update -y && \
-    yum install -y sudo && \
+    yum install -y sudo curl gcc-c++ make && \
     yum reinstall -y glibc-common && \
+    yum -y clean all
+
+# install nodejs
+RUN set -x && \
+    curl -sL https://rpm.nodesource.com/setup_10.x | bash - && \
+    yum install -y nodejs && \
+    yum -y clean all
+
+# install git
+RUN set -x && \
+    yum install -y git && \
     yum -y clean all
 
 # locale settings

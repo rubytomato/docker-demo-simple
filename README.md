@@ -30,6 +30,12 @@ VERSION_CODENAME=bionic
 UBUNTU_CODENAME=bionic
 ```
 
+install package
+
+* curl
+* nodejs
+* git
+
 ### app2
 
 [centos](https://hub.docker.com/_/centos/)
@@ -54,6 +60,12 @@ CENTOS_MANTISBT_PROJECT_VERSION="7"
 REDHAT_SUPPORT_PRODUCT="centos"
 REDHAT_SUPPORT_PRODUCT_VERSION="7"
 ```
+
+install package
+
+* curl
+* nodejs
+* git
 
 ## docker-compose command
 
